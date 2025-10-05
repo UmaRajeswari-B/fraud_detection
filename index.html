@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Detection Flowchart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 class="one">FRAUD DETECTION IN FINANCIAL TRANSACTION</h1>
+  <h1  id="one">Introduction </h1>
+    
+    <ul>
+    <li>The increasing reliance on digital payments and online banking has made financial systems more vulnerable to fraudulent activities. Fraudulent transactions, if undetected, can cause severe monetary loss and erode customer trust. To address this challenge, a software model has been developed for Fraud Detection in Financial Transactions.
+    </li><br>
+    <li>This model analyzes transaction data such as amount and time of transaction to identify unusual or high-risk patterns. For example, transactions above a certain threshold during odd hours are flagged as potentially fraudulent. Using adaptive learning, the system continuously refines its detection capability by recognizing both fraudulent and legitimate behaviors, thereby improving accuracy over time.</li>
+    <br>
+    <li>By classifying transactions into normal and fraudulent, this model helps financial institutions minimize risks, strengthen security, and provide customers with a safer digital transaction environment. </li>
+    </ul> 
+
+<h1 class="two">Flowchart</h1>
+<img src="model2.png" width="900px">
+<h1 id="two">FRAUD DETECTION CODE</h1>
+<center>
+<p>
+    import numpy as np<br>
+import pandas as pd<br>
+import matplotlib.pyplot as plt<br>
+np.random.seed(42)<br>
+n = 500<br>
+amount = np.random.uniform(50, 10000, n)<br>
+time_of_day = np.random.randint(0, 24, n)<br>
+is_fraud = (amount > 5000) & ((time_of_day < 6) | (time_of_day > 21))<br>
+is_fraud = is_fraud.astype(int)<br>
+df = pd.DataFrame({<br>
+ 'Amount': amount,<br>
+ 'TimeOfDay': time_of_day,<br>
+ 'IsFraud': is_fraud<br>
+})<br>
+plt.figure(figsize=(10, 6))<br>
+ax = plt.gca()<br>
+ax.set_facecolor('#f8f8f8')<br>
+plt.scatter(df[df['IsFraud'] == 0]['TimeOfDay'], df[df['IsFraud'] == 0]['Amount'],<br>
+color='#2E8B57', s=60, alpha=0.6, edgecolors='black', label='Normal <br>
+Transaction')<br>
+plt.scatter(df[df['IsFraud'] == 1]['TimeOfDay'], df[df['IsFraud'] == 1]['Amount'],<br>
+ color='#DC143C', s=100, alpha=0.9, edgecolors='black', label='Fraudulent <br>
+Transaction')<br>
+plt.title('AI-EBPL-Fraud Detection in Financial Transactions', fontsize=15, weight='bold')<br>
+plt.xlabel('Hour of Day (0 - 23)', fontsize=12)<br>
+plt.ylabel('Transaction Amount (₹)', fontsize=12)<br>
+plt.xticks(range(0, 24))<br>
+plt.grid(True, linestyle='--', alpha=0.5)<br>
+plt.legend(title='Legend', fontsize=10, loc='upper right')<br>
+plt.tight_layout()<br>
+plt.show()<br>
+</p>
+</center>
+<h1 class="code">screenshot for code</h1>
+<img src="code.png" width="500px">
+<img src="output.png" width="500px">
+</body>
+</html>
